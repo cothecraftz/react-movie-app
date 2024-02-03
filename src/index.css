@@ -1,3 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+	@apply bg-bg;
+}
+
+header {
+	background-image: url(../src/assets/images/bg.jpg);
+	background-position: center;
+	background-size: cover;
+	mask: linear-gradient(white 60%, transparent);
+}
+
+nav.visible {
+	background-color: rgba(0, 0, 0, 0.6);
+}

@@ -1,33 +1,30 @@
-import { useEffect } from 'react';
 import { fetchDataApi } from './utils/api';
-import { useSelector, useDispatch } from 'react-redux';
-import { getApiConfiguration, getGenres } from './store/homeSlice';
+import { getApiPopular } from './store/homeSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Homepage from './pages/home';
 
 function App() {
 	const dispatch = useDispatch();
 	const { url } = useSelector((state) => state.home);
-	const { genres } = useSelector((state) => state.home);
 
 	console.log(url);
-	console.log(genres);
 
 	useEffect(() => {
-		apiTesting();
+		apitesting();
 	}, []);
 
-	const apiTesting = () => {
-		fetchDataApi('/movie/popular').then((res) => {
-			dispatch(getApiConfiguration(res));
-		});
-		fetchDataApi('/genre/movie/list').then((res) => {
-			dispatch(getGenres(res));
-		});
+	const apitesting = () => {
+		fetchDataApi('/movie/popular').then((res) => dispatch(getApiPopular(res)));
 	};
 
 	return (
-		<div>
-			<h1></h1>
-		</div>
+		<BrowserRouter>
+			<Routes>
+				<Route path="/" element={<Homepage />} />
+			</Routes>
+		</BrowserRouter>
 	);
 }
 

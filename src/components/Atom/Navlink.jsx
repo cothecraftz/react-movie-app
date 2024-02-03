@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const Navlink = ({ children, to }) => {
 	return (
-		<div className="text-light font-medium">
+		<div className="text-light font-medium hover:text-pink">
 			<NavLink to={to}>{children}</NavLink>
 		</div>
 	);

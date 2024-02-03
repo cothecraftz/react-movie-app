@@ -1,5 +1,5 @@
 import { fetchDataApi } from './utils/api';
-import { getApiPopular } from './store/homeSlice';
+import { getApiConfiguration } from './store/homeSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
@@ -7,16 +7,24 @@ import Homepage from './pages/home';
 
 function App() {
 	const dispatch = useDispatch();
-	const { url } = useSelector((state) => state.home);
+	// const { url } = useSelector((state) => state.home);
 
-	console.log(url);
+	// console.log(url);
 
 	useEffect(() => {
-		apitesting();
+		apiConfiguration();
 	}, []);
 
-	const apitesting = () => {
-		fetchDataApi('/movie/popular').then((res) => dispatch(getApiPopular(res)));
+	const apiConfiguration = () => {
+		fetchDataApi('/configuration').then((res) => {
+			// console.log(res);
+			const url = {
+				poster: res.images.secure_base_url + 'original',
+				backdrop: res.images.secure_base_url + 'original',
+				profile: res.images.secure_base_url + 'original',
+			};
+			dispatch(getApiConfiguration(url));
+		});
 	};
 
 	return (

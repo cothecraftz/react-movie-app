@@ -5,14 +5,14 @@ export default {
 		extend: {
 			container: {
 				center: true,
-				padding: '1rem',
 			},
 			screens: {
-				'2xl': { min: '1279px' },
-				xl: { max: '1279px' },
-				lg: { max: '1023px' },
+				'2xl': { min: '1280px' },
+				xl: { max: '1023px' },
+				lg: { max: '960px' },
 				md: { max: '767px' },
-				sm: { max: '767px' },
+				sm: { max: '600px' },
+				xs: { max: '420px' },
 			},
 			colors: {
 				bg: '#05152e',

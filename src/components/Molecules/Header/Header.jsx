@@ -19,15 +19,14 @@ const Header = () => {
 	}, [data, url]);
 
 	return (
-		<header className="relative w-full h-[650px] mb-96 overflow-hidden">
+		<header className="relative w-full min-h-screen mb-96 overflow-hidden">
 			<Navbar />
-			<Img
-				className="object-cover object-center w-full h-full absolute"
-				src={`${background}`}
-			/>
-			<section className="container h-[600px] flex justify-center items-center">
+			<div className="img__container w-full h-full absolute">
+				<Img src={`${background}`} />
+			</div>
+			<div className="absolute top-0 left-0 z-40 w-full h-full">
 				<HeroContent />
-			</section>
+			</div>
 		</header>
 	);
 };

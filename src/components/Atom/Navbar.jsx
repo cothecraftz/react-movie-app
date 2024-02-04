@@ -73,7 +73,7 @@ const Navbar = () => {
 				}}
 				className={`close__search ${
 					isSearch ? 'open' : ''
-				} absolute text-3xl text-light cursor-pointer`}
+				} absolute text-2xl text-light cursor-pointer`}
 			/>
 			<InputSearch className={`search__nav ${isSearch ? 'open' : ''} absolute opacity-0`} />
 		</nav>

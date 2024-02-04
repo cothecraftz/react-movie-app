@@ -1,15 +1,12 @@
 import { fetchDataApi } from './utils/api';
 import { getApiConfiguration } from './store/homeSlice';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Homepage from './pages/home';
 
 function App() {
 	const dispatch = useDispatch();
-	// const { url } = useSelector((state) => state.home);
-
-	// console.log(url);
 
 	useEffect(() => {
 		apiConfiguration();

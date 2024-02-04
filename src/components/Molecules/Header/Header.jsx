@@ -8,9 +8,7 @@ import Img from '../../LazyLoadImages/Img';
 const Header = () => {
 	const [background, setBackground] = useState('');
 	const { url } = useSelector((state) => state.home);
-	const { data, loading } = useFetch('/movie/upcoming');
-
-	console.log(loading);
+	const { data } = useFetch('/movie/upcoming');
 
 	useEffect(() => {
 		console.log(data);
@@ -19,7 +17,7 @@ const Header = () => {
 	}, [data, url]);
 
 	return (
-		<header className="relative w-full min-h-screen mb-96 overflow-hidden">
+		<header className="relative w-full min-h-screen mb-12 overflow-hidden">
 			<Navbar />
 			<div className="img__container w-full h-full absolute">
 				<Img src={`${background}`} />

@@ -1,11 +1,17 @@
+import Navbar from '../components/Atom/Navbar';
 import Header from '../components/Molecules/Header/Header';
-import MainContent from '../components/Molecules/MainContent/MainContent';
+import Popular from '../components/Molecules/MainContent/Popular';
+import TopRate from '../components/Molecules/MainContent/TopRate';
+import Trending from '../components/Molecules/MainContent/trending';
 
 const Homepage = () => {
 	return (
 		<>
 			<Header />
-			<MainContent />
+			<Navbar />
+			<Trending />
+			<Popular />
+			<TopRate />
 		</>
 	);
 };

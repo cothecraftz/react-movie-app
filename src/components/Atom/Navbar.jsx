@@ -31,11 +31,11 @@ const Navbar = () => {
 
 	return (
 		<nav
-			className={`fixed top-0 left-0 z-50 w-full h-16 px-8 lg:px-4 flex items-center shadow-sm ${
+			className={`fixed top-0 left-0 z-50 w-full h-16 flex items-center shadow-sm ${
 				isScroll ? 'visible' : ''
 			}`}
 		>
-			<div className="container flex justify-between">
+			<div className="container flex justify-between px-8">
 				<h1 className="logo bg-clip-text text-2xl uppercase font-bold">layarkaca21</h1>
 				<div className="flex items-center gap-4">
 					<div

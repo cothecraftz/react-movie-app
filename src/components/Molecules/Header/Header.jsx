@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import HeroContent from '../../Atom/HeroContent';
-import Navbar from '../../Atom/Navbar';
+// import Navbar from '../../Atom/Navbar';
 import useFetch from '../../../hooks/useFetch';
 import { useSelector } from 'react-redux';
 import Img from '../../LazyLoadImages/Img';
@@ -17,8 +17,7 @@ const Header = () => {
 	}, [data, url]);
 
 	return (
-		<header className="relative w-full min-h-screen mb-12 overflow-hidden">
-			<Navbar />
+		<header className="relative w-full min-h-screen overflow-hidden">
 			<div className="img__container w-full h-full absolute">
 				<Img src={`${background}`} />
 			</div>

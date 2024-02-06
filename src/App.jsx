@@ -1,20 +1,21 @@
 import { fetchDataApi } from './utils/api';
-import { getApiConfiguration } from './store/homeSlice';
+import { getApiConfiguration, getGenres } from './store/homeSlice';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Homepage from './pages/home';
+import DetailPage from './pages/detail';
 
 function App() {
 	const dispatch = useDispatch();
 
 	useEffect(() => {
 		apiConfiguration();
+		genreConfiguration();
 	}, []);
 
 	const apiConfiguration = () => {
 		fetchDataApi('/configuration').then((res) => {
-			// console.log(res);
 			const url = {
 				poster: res.images.secure_base_url + 'original',
 				backdrop: res.images.secure_base_url + 'original',
@@ -24,10 +25,27 @@ function App() {
 		});
 	};
 
+	const genreConfiguration = async () => {
+		let promises = [];
+		let endPoints = ['tv', 'movie'];
+		let AllGnres = {};
+
+		endPoints.forEach((url) => {
+			promises.push(fetchDataApi(`genre/${url}/list`));
+		});
+
+		const data = await Promise.all(promises);
+		data.map(({ genres }) => {
+			return genres.map((item) => (AllGnres[item.id] = item));
+		});
+		dispatch(getGenres(AllGnres));
+	};
+
 	return (
 		<BrowserRouter>
 			<Routes>
 				<Route path="/" element={<Homepage />} />
+				<Route path="/:mediaType/:id" element={<DetailPage />} />
 			</Routes>
 		</BrowserRouter>
 	);

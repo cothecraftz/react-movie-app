@@ -4,12 +4,14 @@ import { CgSearch } from 'react-icons/cg';
 import { IoMenu } from 'react-icons/io5';
 import { RxCross2 } from 'react-icons/rx';
 import InputSearch from './InputSearch';
+import { useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
 	const navRef = useRef(0);
 	const [isScroll, setIsScroll] = useState(true);
 	const [isSearch, setIsSearch] = useState(false);
 	const [isMenu, setIsMenu] = useState(false);
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		const handleScroll = () => {
@@ -17,6 +19,7 @@ const Navbar = () => {
 			if (scrollY > navRef.current) {
 				setIsScroll(false);
 				setIsSearch(false);
+				setIsMenu(false);
 			} else if (scrollY < navRef.current) {
 				// setIsSearch(true);
 				setIsScroll(true);
@@ -35,8 +38,13 @@ const Navbar = () => {
 				isScroll ? 'visible' : ''
 			}`}
 		>
-			<div className="container flex justify-between px-8">
-				<h1 className="logo bg-clip-text text-2xl uppercase font-bold">layarkaca21</h1>
+			<div className="container flex justify-between px-8 sm:px-4">
+				<h1
+					className="logo cursor-pointer bg-clip-text text-2xl uppercase font-bold"
+					onClick={() => navigate('/')}
+				>
+					layarkaca21
+				</h1>
 				<div className="flex items-center gap-4">
 					<div
 						className={`nav__menu flex items-center gap-4 lg:absolute lg:bg-bg lg:flex-col lg:justify-start lg:pt-24 lg:top-0 lg:right-0 lg:translate-x-56 lg:w-56 lg:h-screen lg:px-4 ${

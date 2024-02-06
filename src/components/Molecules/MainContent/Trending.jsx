@@ -16,26 +16,27 @@ const Trending = () => {
 		setEndPoint(item === 'Day' ? 'day' : 'week');
 	};
 
-	console.log(data);
-
 	return (
-		<ContentWrapper>
-			<div className="flex justify-between items-center mb-6">
-				<p className="text-light text-2xl font-bold">Trending</p>
-				<Swich dataSwitch={['Day', 'Week']} onTabChange={onTabChange} />
-			</div>
-
-			<div className="card__wrapper">
-				{data?.results?.map((item) => {
-					const posterUrl = item.poster_path ? url.poster + item.poster_path : PosterFallback;
-					return (
-						<Suspense key={item.id} fallback={<Loader />}>
-							<Card data={item} src={posterUrl} />
-						</Suspense>
-					);
-				})}
-			</div>
-		</ContentWrapper>
+		<div className="mb-20">
+			<ContentWrapper>
+				<div className="flex justify-between items-center mb-6">
+					<p className="text-light text-xl font-bold">Trending</p>
+					<Swich dataSwitch={['Day', 'Week']} onTabChange={onTabChange} />
+				</div>
+				<div className="card__wrapper">
+					{data?.results?.map((item) => {
+						const posterUrl = item.poster_path
+							? url.poster + item.poster_path
+							: PosterFallback;
+						return (
+							<Suspense key={item.id} fallback={<Loader />}>
+								<Card data={item} src={posterUrl} endPoint={endPoint} />
+							</Suspense>
+						);
+					})}
+				</div>
+			</ContentWrapper>
+		</div>
 	);
 };
 export default Trending;

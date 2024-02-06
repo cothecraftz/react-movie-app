@@ -11,7 +11,6 @@ const Header = () => {
 	const { data } = useFetch('/movie/upcoming');
 
 	useEffect(() => {
-		console.log(data);
 		const bg = url.backdrop + data?.results?.[Math.floor(Math.random() * 20)]?.backdrop_path;
 		setBackground(bg);
 	}, [data, url]);

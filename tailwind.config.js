@@ -19,6 +19,7 @@ export default {
 				orange: '#f89e00',
 				pink: '#da2f68',
 				light: '#fefefe',
+				footer: '#030c1b',
 			},
 		},
 	},

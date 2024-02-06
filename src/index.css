@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+	.card-sosmed {
+		@apply w-12 h-12 rounded-full bg-bg grid place-content-center;
+	}
+	.sosmed {
+		@apply text-light text-2xl;
+	}
+}
+
 :root {
 	--gradient: linear-gradient(98.37deg, #f89e00 0.99%, #da2f68 100%);
 }
@@ -20,13 +29,13 @@ header::after {
 	height: 100%;
 	inset: 0;
 	z-index: 10;
-	background-color: rgba(5, 21, 46, 0.4);
+	background-color: rgba(5, 21, 46, 0.7);
 }
 
 nav {
 	transform: translateY(-100%);
 	transition: 0.3s;
-	background-color: rgba(5, 21, 46, 0.5);
+	background-color: rgba(5, 21, 46, 0.7);
 }
 
 nav.visible {
@@ -100,7 +109,6 @@ nav.visible {
 	width: 100%;
 	padding-inline: 2rem;
 	margin: 0 auto;
-	margin-bottom: 100px;
 	/* overflow: hidden; */
 }
 
@@ -129,38 +137,97 @@ nav.visible {
 .card__wrapper {
 	display: grid;
 	grid-auto-flow: column;
-	grid-auto-columns: calc((100% / 6) - 12px);
+	grid-auto-columns: auto;
+	min-height: 250px;
 	gap: 1rem;
 	overflow-x: auto;
 	scroll-snap-type: x mandatory;
 	scrollbar-width: none;
 }
 .card div .lazy-load-image-background {
+	position: relative;
 	width: 100%;
-	aspect-ratio: 1 / 1.5;
+	height: 250px;
 }
 .card div .lazy-load-image-background img {
+	position: absolute;
+	inset: 0;
 	width: 100%;
 	height: 100%;
 	border-radius: 1rem;
 }
 
 .card {
-	width: 100%;
-	aspect-ratio: 1 / 1.5;
+	position: relative;
+	width: 160px;
+	height: 320px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 	cursor: pointer;
 }
 
+.genre {
+	background-image: var(--gradient);
+}
+
+.CircularProgressbar-text {
+	font-weight: 800;
+}
+
+.backdrop__img {
+	mask: linear-gradient(#05152e 80%, transparent);
+}
+
+.backdrop__img .lazy-load-image-background {
+	width: 100%;
+	height: 100%;
+}
+.backdrop__img .lazy-load-image-background img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+.layer__opacity {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	inset: 0;
+	background-color: rgba(5, 21, 46, 0.9);
+}
+.detail__left .lazy-load-image-background {
+	width: 100%;
+	height: 100%;
+}
+.detail__left .lazy-load-image-background img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.info {
+	color: white;
+	padding-block: 0.6rem;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* loadng benner */
+.left__skeleton {
+	width: 300px;
+	height: 450px;
+	background-color: salmon;
+}
+
 @media screen and (max-width: 960px) {
-	.card__wrapper {
+	/* .card__wrapper {
 		grid-auto-columns: calc((100% / 5) - 12px);
-	}
+	} */
 }
 
 @media screen and (max-width: 767px) {
-	.card__wrapper {
+	/* .card__wrapper {
 		grid-auto-columns: calc((100% / 4) - 12px);
-	}
+	} */
 }
 
 @media screen and (max-width: 600px) {
@@ -170,11 +237,11 @@ nav.visible {
 	.btn__search {
 		width: 80px;
 	}
+	.content__wrapper {
+		padding-inline: 1rem;
+	}
 	.search__nav {
 		width: calc(100% - 2rem);
 		margin: 0 auto;
-	}
-	.card__wrapper {
-		grid-auto-columns: calc((100% / 2) - 12px);
 	}
 }

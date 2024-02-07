@@ -2,14 +2,11 @@ import { useParams } from 'react-router-dom';
 import useFetch from '../hooks/useFetch';
 import Navbar from '../components/Atom/Navbar';
 import Footer from '../components/Molecules/Footer';
-// import DetailBenner from '../components/Molecules/Detail/DetailBenner';
-// import React, { Suspense } from 'react';
 import DetailBenner from '../components/Molecules/Detail/DetailBenner';
 import LoaderDetail from '../components/Atom/LoaderDetail';
 import TopCast from '../components/Molecules/Detail/TopCast';
 import Similar from '../components/Molecules/Detail/Similar';
 import Recomendation from '../components/Molecules/Detail/Recomendation';
-// const DetailBenner = React.lazy(() => import('../components/Molecules/Detail/DetailBenner'));
 
 const DetailPage = () => {
 	const { mediaType, id } = useParams();

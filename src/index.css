@@ -69,16 +69,19 @@ nav.visible {
 	transform: translate(-50%, 0);
 }
 .search__nav {
-	top: 110px;
+	position: absolute;
+	top: 103px;
 	left: 50%;
 	transform: translate(-50%, -8px);
 	max-width: 500px;
 	transition: 0.2s;
-	visibility: hidden;
+	opacity: 0;
+	user-select: none;
+	/* visibility: hidden; */
 }
 .search__nav.open {
 	opacity: 1;
-	visibility: visible;
+	/* visibility: visible; */
 	transform: translate(-50%, 0);
 }
 
@@ -218,16 +221,28 @@ nav.visible {
 	background-color: salmon;
 }
 
+.search-card-wrapper {
+	display: grid;
+	grid-template-columns: repeat(7, 1fr);
+	gap: 1rem;
+}
+
+@media screen and (max-width: 1023px) {
+	.search-card-wrapper {
+		grid-template-columns: repeat(6, 1fr);
+	}
+}
+
 @media screen and (max-width: 960px) {
-	/* .card__wrapper {
-		grid-auto-columns: calc((100% / 5) - 12px);
-	} */
+	.search-card-wrapper {
+		grid-template-columns: repeat(5, 1fr);
+	}
 }
 
 @media screen and (max-width: 767px) {
-	/* .card__wrapper {
-		grid-auto-columns: calc((100% / 4) - 12px);
-	} */
+	.search-card-wrapper {
+		grid-template-columns: repeat(4, 1fr);
+	}
 }
 
 @media screen and (max-width: 600px) {
@@ -243,5 +258,14 @@ nav.visible {
 	.search__nav {
 		width: calc(100% - 2rem);
 		margin: 0 auto;
+	}
+	.search-card-wrapper {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+
+@media screen and (max-width: 420px) {
+	.search-card-wrapper {
+		grid-template-columns: repeat(2, 1fr);
 	}
 }

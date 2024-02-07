@@ -11,7 +11,23 @@ const Navbar = () => {
 	const [isScroll, setIsScroll] = useState(true);
 	const [isSearch, setIsSearch] = useState(false);
 	const [isMenu, setIsMenu] = useState(false);
+	const [query, setQuery] = useState('');
 	const navigate = useNavigate();
+
+	const searchQueryBtn = () => {
+		if (query.length > 0) {
+			navigate(`/search/${query}`);
+			setQuery('');
+			setIsSearch(false);
+		}
+	};
+	const searchQuery = (e) => {
+		if (e.key === 'Enter' && query.length > 0) {
+			navigate(`/search/${query}`);
+			setQuery('');
+			setIsSearch(false);
+		}
+	};
 
 	useEffect(() => {
 		const handleScroll = () => {
@@ -20,8 +36,8 @@ const Navbar = () => {
 				setIsScroll(false);
 				setIsSearch(false);
 				setIsMenu(false);
+				setQuery('');
 			} else if (scrollY < navRef.current) {
-				// setIsSearch(true);
 				setIsScroll(true);
 			}
 			navRef.current = scrollY;
@@ -31,6 +47,15 @@ const Navbar = () => {
 			window.removeEventListener('scroll', handleScroll);
 		};
 	}, []);
+
+	const inputRef = useRef(null);
+	useEffect(() => {
+		if (isSearch) {
+			inputRef.current.focus();
+		} else {
+			inputRef.current.blur();
+		}
+	}, [isSearch]);
 
 	return (
 		<nav
@@ -83,7 +108,14 @@ const Navbar = () => {
 					isSearch ? 'open' : ''
 				} absolute text-2xl text-light cursor-pointer`}
 			/>
-			<InputSearch className={`search__nav ${isSearch ? 'open' : ''} absolute opacity-0`} />
+			<InputSearch
+				ref={inputRef}
+				onClick={searchQueryBtn}
+				value={query}
+				onKeyUp={searchQuery}
+				onChange={(e) => setQuery(e.target.value)}
+				className={`search__nav ${isSearch ? 'open' : ''}`}
+			/>
 		</nav>
 	);
 };

@@ -16,7 +16,6 @@ const Similar = () => {
 			setEndpoint('movie');
 		}
 	}, [mediaType]);
-	console.log(data);
 
 	return (
 		<div className="mb-20">

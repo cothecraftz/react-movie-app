@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Homepage from './pages/home';
 import DetailPage from './pages/detail';
 import ScrollToTop from './components/Atom/ScroolToTop';
+import SearchResults from './pages/SearchResults';
 
 function App() {
 	const dispatch = useDispatch();
@@ -48,6 +49,7 @@ function App() {
 			<Routes>
 				<Route path="/" element={<Homepage />} />
 				<Route path="/:mediaType/:id" element={<DetailPage />} />
+				<Route path="/search/:query" element={<SearchResults />} />
 			</Routes>
 		</Router>
 	);

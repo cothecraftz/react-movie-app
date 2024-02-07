@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 const Genres = ({ data }) => {
 	const { genres } = useSelector((state) => state.home);
+
 	return (
 		<>
 			{data?.length > 0 &&
@@ -11,7 +12,7 @@ const Genres = ({ data }) => {
 					return (
 						<p
 							key={index}
-							className="genre text-light text-right font-medium w-fit rounded-[5px] px-2 py-1 text-xs whitespace-nowrap"
+							className="genre text-light text-right font-medium w-fit rounded-[5px] px-1 py-[2px] text-xs whitespace-nowrap"
 						>
 							{genres[item]?.name || genres[item.id]?.name}
 						</p>

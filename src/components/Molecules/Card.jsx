@@ -21,7 +21,7 @@ const Card = ({ data, src, endPoint }) => {
 		<div className="card">
 			<div
 				className="relative"
-				onClick={() => navigate(`${data.media_type || endPoint}/${data.id}`)}
+				onClick={() => navigate(`/${data.media_type || endPoint}/${data.id}`)}
 			>
 				{loading ? (
 					<Loader />

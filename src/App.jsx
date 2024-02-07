@@ -2,9 +2,10 @@ import { fetchDataApi } from './utils/api';
 import { getApiConfiguration, getGenres } from './store/homeSlice';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Homepage from './pages/home';
 import DetailPage from './pages/detail';
+import ScrollToTop from './components/Atom/ScroolToTop';
 
 function App() {
 	const dispatch = useDispatch();
@@ -42,12 +43,13 @@ function App() {
 	};
 
 	return (
-		<BrowserRouter>
+		<Router>
+			<ScrollToTop />
 			<Routes>
 				<Route path="/" element={<Homepage />} />
 				<Route path="/:mediaType/:id" element={<DetailPage />} />
 			</Routes>
-		</BrowserRouter>
+		</Router>
 	);
 }
 

@@ -7,6 +7,7 @@ import Homepage from './pages/home';
 import DetailPage from './pages/detail';
 import ScrollToTop from './components/Atom/ScroolToTop';
 import SearchResults from './pages/SearchResults';
+import ExplorePage from './pages/explore';
 
 function App() {
 	const dispatch = useDispatch();
@@ -50,6 +51,7 @@ function App() {
 				<Route path="/" element={<Homepage />} />
 				<Route path="/:mediaType/:id" element={<DetailPage />} />
 				<Route path="/search/:query" element={<SearchResults />} />
+				<Route path="/explore/:mediaType" element={<ExplorePage />} />
 			</Routes>
 		</Router>
 	);

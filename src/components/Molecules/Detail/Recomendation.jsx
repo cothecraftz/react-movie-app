@@ -17,12 +17,14 @@ const Recomendation = () => {
 	}, [mediaType]);
 	return (
 		<div className="mb-20">
-			<ContentWrapper>
-				<div className="flex justify-between items-center mb-6">
-					<p className="text-light text-xl font-bold">Recomendations</p>
-				</div>
-				<Carousel data={data} endPoint={endPoint} />
-			</ContentWrapper>
+			{!!data?.results?.length > 0 && (
+				<ContentWrapper>
+					<div className="flex justify-between items-center mb-6">
+						<p className="text-light text-xl font-bold">Recomendations</p>
+					</div>
+					<Carousel data={data} endPoint={endPoint} />
+				</ContentWrapper>
+			)}
 		</div>
 	);
 };

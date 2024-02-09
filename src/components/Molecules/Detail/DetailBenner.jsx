@@ -47,9 +47,11 @@ const DetailBenner = ({ credits, data }) => {
 								<p className="text-slate-500 text-sm italic font-medium">
 									{data.tagline || "don't have tagline"}
 								</p>
-								<div className="flex gap-2 py-4">
-									<Genres data={data.genres} />
-								</div>
+								{data?.genres?.length > 0 && (
+									<div className="flex gap-2 py-4">
+										<Genres data={data.genres} />
+									</div>
+								)}
 								<div className="w-12 h-12 rounded-full my-2 overflow-hidden bg-light">
 									<Rating rating={data.vote_average.toFixed(1)} />
 								</div>

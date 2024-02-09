@@ -83,8 +83,22 @@ const Navbar = () => {
 							}}
 							className="hidden lg:block lg:absolute lg:top-4 lg:right-8 lg:text-3xl lg:text-light cursor-pointer"
 						/>
-						<Navlink>Movies</Navlink>
-						<Navlink>TV Shows</Navlink>
+						<Navlink
+							onClick={() => {
+								navigate(`/explore/movie`);
+								setIsMenu(false);
+							}}
+						>
+							Movies
+						</Navlink>
+						<Navlink
+							onClick={() => {
+								navigate(`/explore/tv`);
+								setIsMenu(false);
+							}}
+						>
+							TV Shows
+						</Navlink>
 					</div>
 					<CgSearch
 						onClick={() => setIsSearch(!isSearch)}
